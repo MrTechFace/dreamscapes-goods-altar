@@ -1,0 +1,235 @@
+/* Dreamscapes Goods — shared landing styles */
+:root {
+  --void: #0B0B0D;
+  --pitch: #050506;
+  --smoke: #17171A;
+  --ember: #222226;
+  --ash: #6A6A70;
+  --mist: #A8A6A0;
+  --bone: #E8E4DC;
+  --parchment: #F5F0E5;
+  --sage: #7A8970;
+  --sage-dim: #5F6E58;
+  --rust: #B8541E;
+  --rust-dim: #8E3F14;
+  /* legacy aliases — sage is primary accent */
+  --green: #7A8970;
+  --green-dim: #5F6E58;
+
+  --font-display: "Pirata One", serif;
+  --font-chisel: "Cinzel", serif;
+  --font-body: "Inter", -apple-system, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --shop-url: https://shop.dreamscapesgoods.com;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--void); color: var(--bone); }
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Grain */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' seed='5'/><feColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0.6 0'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* Shared nav */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--bone);
+}
+.nav-brand img { width: 26px; height: 26px; border-radius: 5px; }
+.nav-links {
+  display: flex;
+  gap: 28px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--parchment);
+}
+.nav-links a { opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
+.nav-links a:hover { opacity: 1; color: var(--rust); }
+@media (max-width: 640px) {
+  .nav { padding: 16px 20px; }
+  .nav-links { display: none; }
+}
+
+/* Shop button (shared) */
+.shop-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--void);
+  background: var(--rust);
+  padding: 18px 28px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.shop-cta:hover { background: var(--rust-dim); transform: translateY(-2px); }
+.shop-cta .arr {
+  width: 18px;
+  height: 1px;
+  background: var(--void);
+  position: relative;
+}
+.shop-cta .arr::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -4px;
+  border: 4px solid transparent;
+  border-left-color: var(--void);
+}
+
+/* Footer */
+.foot {
+  padding: 80px 40px 40px;
+  text-align: center;
+  border-top: 1px solid var(--ember);
+  position: relative;
+  z-index: 10;
+  background: var(--void);
+}
+.foot .sig {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 10vw, 140px);
+  color: var(--parchment);
+  line-height: 0.9;
+}
+.foot .sig .dot { color: var(--green); }
+.foot .links {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ash);
+}
+.foot .links a:hover { color: var(--green); }
+.foot .copy {
+  margin-top: 40px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.foot .copy-sub {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ash);
+  opacity: 0.7;
+}
+
+/* Accent color switcher (top-right) */
+.accent-switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.accent-switch .acc-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mist);
+  opacity: 0.6;
+}
+.acc-buttons {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(11,11,13,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--ember);
+  border-radius: 100px;
+}
+.acc-buttons button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 14px 8px 8px;
+  background: transparent;
+  color: var(--mist);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.acc-buttons button:hover { color: var(--bone); }
+.acc-buttons button.active {
+  background: var(--ember);
+  color: var(--bone);
+}
+.acc-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+@media (max-width: 640px) {
+  .accent-switch { top: auto; bottom: 70px; right: 10px; left: 10px; align-items: stretch; }
+  .acc-buttons { justify-content: space-between; }
+  .acc-buttons button { padding: 6px 10px 6px 6px; flex: 1; justify-content: center; font-size: 9px; }
+}
+/* Direction switcher removed — Altar only */
+
