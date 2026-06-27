@@ -1,5 +1,42 @@
 // Shared product data for Dreamscapes Goods
 window.DG_PRODUCTS = [
+  // ── ANCIENT / MYTHOLOGY ───────────────────────────────────────────────────
+  { id: "aztec",       title: "Aztec Feathered\nSerpent",            cat: "Tee · Ancient",       price: 59, featured: true,  group: "ancient",
+    img: "https://images-api.printify.com/mockup/6a0b7529bbd39177170cf50c/73204/98445/aztec-feathered-serpent-tshirt-vintage-quetzalcoatl-graphic-tee.jpg?camera_label=front&s=1024",
+    url: "https://shop.dreamscapesgoods.com/product/28727915/aztec-feathered-serpent-tshirt-vintage-quetzalcoatl-graphic-tee" },
+
+  { id: "falcon",      title: "Pellegrine Falcon\nSunset",           cat: "Tee · Ancient",       price: 59, featured: true,  group: "ancient",
+    img: "https://images-api.printify.com/mockup/6a06f3ff15ed572bb302eb5d/73207/98445/pellegrine-falcon-sunset-t-shirt-vintage-hawk-graphic-tee.jpg?camera_label=front&s=1024",
+    url: "https://shop.dreamscapesgoods.com/product/28643610/pellegrine-falcon-sunset-t-shirt-vintage-hawk-graphic-tee" },
+
+  { id: "hathor",      title: "Hathor\nEgyptian Goddess",            cat: "Tee · Ancient",       price: 59, group: "ancient",
+    img: "https://images-api.printify.com/mockup/6a05fd62463a9e767f0349d5/73204/98445/hathor-egyptian-goddess-t-shirt-golden-sun-disk-sacred-emblem-tee.jpg?camera_label=front&s=1024",
+    url: "https://shop.dreamscapesgoods.com/product/28628330/hathor-egyptian-goddess-t-shirt-golden-sun-disk-sacred-emblem-tee" },
+
+  { id: "sekhmet",     title: "Sekhmet\nLioness Goddess",            cat: "Tee · Ancient",       price: 59, group: "ancient",
+    img: "https://images-api.printify.com/mockup/6a05b76a1ae0df57bf013884/73204/98445/sekhmet-lioness-goddess-t-shirt-egyptian-sun-disk-sacred-art-tee.jpg?camera_label=front&s=1024",
+    url: "https://shop.dreamscapesgoods.com/product/28621372/sekhmet-lioness-goddess-t-shirt-egyptian-sun-disk-sacred-art-tee" },
+
+  { id: "anubissun",   title: "Anubis Sun\nPharaoh",                 cat: "Tee · Ancient",       price: 59, group: "ancient",
+    img: "https://images-api.printify.com/mockup/6a04a57fafb8c5abaa09c1a6/73204/98445/anubis-sun-pharaoh-t-shirt-egyptian-god-horusanubis-mythology-graphic-tee.jpg?camera_label=front&s=1024",
+    url: "https://shop.dreamscapesgoods.com/product/28603774/anubis-sun-pharaoh-t-shirt-egyptian-god-horusanubis-mythology-graphic-tee" },
+
+  { id: "anubis",      title: "Anubis Pharaoh",                      cat: "Tee · Ancient",       price: 25.99, group: "ancient",
+    img: "https://images-api.printify.com/mockup/6a049eff4261b0d2ea07df4e/73204/98445/anubis-pharaoh-t-shirt-egyptian-jackal-god-graphic-tee.jpg?camera_label=front&s=1024",
+    url: "https://shop.dreamscapesgoods.com/product/28603617/anubis-pharaoh-t-shirt-egyptian-jackal-god-graphic-tee" },
+
+  { id: "ganesha",     title: "Ganesha",                             cat: "Tee · Ancient",       price: 59, group: "ancient",
+    img: "https://images-api.printify.com/mockup/6a04604fb796133c9d077395/73207/98445/ganesha-graphic-t-shirt-hindu-elephant-deity-tee-for-festivals-spiritual-wear.jpg?camera_label=front&s=1024",
+    url: "https://shop.dreamscapesgoods.com/product/28597301/ganesha-graphic-t-shirt-hindu-elephant-deity-tee-for-festivals-and-amp-spiritual-wear" },
+
+  { id: "kali",        title: "Kali Goddess",                        cat: "Tee · Ancient",       price: 59, group: "ancient",
+    img: "https://images-api.printify.com/mockup/6a045bb99c35c408d2019670/73204/98445/kali-goddess-graphic-t-shirt-hindu-deity-spiritual-art-tee.jpg?camera_label=front&s=1024",
+    url: "https://shop.dreamscapesgoods.com/product/28597158/kali-goddess-graphic-t-shirt-hindu-deity-spiritual-art-tee" },
+
+  { id: "shiva",       title: "Shiva Meditation",                    cat: "Tee · Ancient",       price: 20.68, group: "ancient",
+    img: "https://images-api.printify.com/mockup/6a033b3ee8799fc72e047ab2/73207/98445/shiva-meditation-t-shirt-blue-shiva-graphic-tee.jpg?camera_label=front&s=1024",
+    url: "https://shop.dreamscapesgoods.com/product/28580540/shiva-meditation-t-shirt-blue-shiva-graphic-tee" },
+
   // ── CRYPTID ──────────────────────────────────────────────────────────────
   { id: "werewolf",   title: "Beware of the\nWerewolf",      cat: "Tee · Cryptid",        price: 59, featured: true,  group: "cryptid",
     img: "https://images-api.printify.com/mockup/698b4a4b5a98e1d17a0d585d/103520/100479/us-beware-of-the-werewolf-tee.jpg?camera_label=person-2-back&s=1024",

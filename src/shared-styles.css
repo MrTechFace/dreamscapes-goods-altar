@@ -61,6 +61,13 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: space-between;
   z-index: 100;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+}
+.nav.scrolled {
+  background: rgba(5, 5, 6, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 var(--ember), 0 4px 24px rgba(0,0,0,0.35);
 }
 .nav-brand {
   display: flex;
@@ -84,9 +91,71 @@ img { max-width: 100%; display: block; }
 }
 .nav-links a { opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
 .nav-links a:hover { opacity: 1; color: var(--rust); }
+
+/* Hamburger button — mobile only */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 101;
+}
+.nav-burger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--bone);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile dropdown menu */
+.nav-mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(5, 5, 6, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--ember);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 24px 28px;
+  gap: 0;
+  animation: menuSlide 0.25s ease;
+}
+@keyframes menuSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nav-mobile-menu a {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--parchment);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--ember);
+  transition: color 0.2s;
+}
+.nav-mobile-menu a:last-child { border-bottom: none; }
+.nav-mobile-menu a:hover { color: var(--rust); }
+
 @media (max-width: 640px) {
   .nav { padding: 16px 20px; }
   .nav-links { display: none; }
+  .nav-burger { display: flex; }
 }
 
 /* Shop button (shared) */

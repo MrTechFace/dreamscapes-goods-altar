@@ -2,11 +2,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import HeroBg from './HeroBg.jsx';
 
+const fmtPrice = (n) => Number.isInteger(n) ? `$${n}` : `$${Math.round(n)}`;
+
 function Altar() {
   const [scrollY, setScrollY] = useState(0);
+  const [navScrolled, setNavScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
+    const onScroll = () => {
+      setScrollY(window.scrollY);
+      setNavScrolled(window.scrollY > 60);
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -24,12 +31,13 @@ function Altar() {
   }, []);
 
   const featured = window.DG_PRODUCTS.filter(p => p.featured).slice(0, 4);
+  const ancients = window.DG_PRODUCTS.filter(p => p.group === 'ancient');
   const cryptids = window.DG_PRODUCTS.filter(p => p.group === 'cryptid');
   const manifestos = window.DG_PRODUCTS.filter(p => p.group === 'manifesto');
   const gestures = window.DG_PRODUCTS.filter(p => p.group === 'gesture');
 
   const renderMini = (p, i) => (
-    <a key={p.id} href={p.url} className="altar-mini" data-reveal style={{'--delay': `${(i % 8) * 40}ms`}}>
+    <a key={p.id} href={p.url} className="altar-mini" data-reveal style={{'--delay': `${(i % 6) * 40}ms`}}>
       <div className="altar-mini-media">
         {p.img ? (
           <img src={p.img} alt={p.title.replace('\n',' ')} className="altar-mini-img" />
@@ -39,14 +47,14 @@ function Altar() {
       </div>
       <div className="altar-mini-meta">
         <h4>{p.title.replace('\n', ' ')}</h4>
-        <span>${p.price}</span>
+        <span>{fmtPrice(p.price)}</span>
       </div>
     </a>
   );
 
   return (
     <div className="altar grain">
-      <nav className="nav">
+      <nav className={`nav${navScrolled ? ' scrolled' : ''}`}>
         <div className="nav-brand">
           <img src={(window.__resources && window.__resources.faviconRust) || "/assets/favicon-rust.png"} alt="DS" />
           <span>Dreamscapes Goods</span>
@@ -56,6 +64,16 @@ function Altar() {
           <a href="#about">About</a>
           <a href="https://shop.dreamscapesgoods.com">Shop ↗</a>
         </div>
+        <button className={`nav-burger${menuOpen ? ' open' : ''}`} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+          <span /><span /><span />
+        </button>
+        {menuOpen && (
+          <div className="nav-mobile-menu">
+            <a href="#collection" onClick={() => setMenuOpen(false)}>Collection</a>
+            <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="https://shop.dreamscapesgoods.com" onClick={() => setMenuOpen(false)}>Shop ↗</a>
+          </div>
+        )}
       </nav>
 
       {/* HERO */}
@@ -67,7 +85,7 @@ function Altar() {
         <div className="altar-hero-inner">
           <div className="altar-eyebrow" data-reveal>
             <span className="dot" />
-            <span>Collection 01 · Cryptids, Manifestos &amp; Gestures</span>
+            <span>Collection 01 · Myths · Cryptids · Manifestos · Gestures</span>
           </div>
 
           <h1 className="altar-title" data-reveal>
@@ -84,8 +102,8 @@ function Altar() {
               Enter the Shop <span className="arr" />
             </a>
             <div className="altar-stats">
-              <div><span className="n">16</span><span className="l">Pieces</span></div>
-              <div><span className="n">$45–89</span><span className="l">Price</span></div>
+              <div><span className="n">26</span><span className="l">Pieces</span></div>
+              <div><span className="n">$20–89</span><span className="l">Price</span></div>
             </div>
           </div>
         </div>
@@ -124,22 +142,27 @@ function Altar() {
                   <h3 className="altar-card-title">{p.title.split('\n').map((line, j) => <span key={j}>{line}<br/></span>)}</h3>
                   <p className="altar-card-cat">{p.cat}</p>
                 </div>
-                <span className="altar-card-price">${p.price}</span>
+                <span className="altar-card-price">{fmtPrice(p.price)}</span>
               </div>
             </a>
           ))}
         </div>
-        <div className="altar-final-cta" data-reveal style={{ marginTop: '60px', textAlign: 'center' }}>
-          <a href="https://shop.dreamscapesgoods.com" className="shop-cta">
-            View All Products <span className="arr" />
-          </a>
+      </section>
+
+      {/* ANCIENT MYTHOLOGY */}
+      <section className="altar-all altar-coll">
+        <div className="altar-sec-head" data-reveal>
+          <span className="sec-num">02 / Ancient Mythology</span>
+          <h2 className="sec-title">The<br/>Divine</h2>
+          <p className="sec-desc">Egyptian gods, Hindu deities, Aztec serpents. Sacred imagery worn as everyday as a homage to the olde world.</p>
         </div>
+        <div className="altar-all-grid">{ancients.map(renderMini)}</div>
       </section>
 
       {/* ABOUT — minimal, mythic */}
       <section id="about" className="altar-about">
         <div className="altar-about-inner">
-          <span className="sec-num" data-reveal>02 / Origin</span>
+          <span className="sec-num" data-reveal>03 / Origin</span>
           <p className="altar-about-quote" data-reveal>
             From a small studio in Sweden, for the American ritual of daily wear.
             <span className="accent"> Cryptids, gods, beliefs, and small gestures &mdash; printed on demand.</span>
